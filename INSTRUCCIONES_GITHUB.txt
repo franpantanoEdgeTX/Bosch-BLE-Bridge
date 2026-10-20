@@ -1,0 +1,35 @@
+BOSCH BLE BRIDGE - COMPILACION EN GITHUB ACTIONS
+
+1. Abrir https://github.com y entrar en tu cuenta.
+2. Pulsar + > New repository. Nombre: Bosch-BLE-Bridge.
+   Elegir Private (o Public). Crear repositorio SIN README inicial.
+3. En la pagina del repositorio, elegir 'uploading an existing file'
+   (o Add file > Upload files).
+4. DESCOMPRIMIR este ZIP en tu PC y ARRASTRAR AL NAVEGADOR el contenido
+   de la carpeta BoschBLEBridge, no el ZIP. Hay que mantener las rutas:
+      .github/workflows/android-apk.yml
+      app/build.gradle
+      app/src/main/AndroidManifest.xml
+      app/src/main/java/com/example/boschblebridge/MainActivity.java
+      build.gradle
+      settings.gradle
+   ATENCION: Windows puede ocultar la carpeta .github. Comprobar que
+   el archivo .github/workflows/android-apk.yml se haya subido.
+5. Pulsar Commit changes.
+6. Abrir Actions > Compilar APK Android > Run workflow > Run workflow.
+   El workflow tambien se inicia al subir los archivos.
+7. Abrir la ejecucion terminada y descargar 'Bosch-BLE-Bridge-APK'
+   en la seccion Artifacts. Descomprimir para obtener app-debug.apk.
+8. Copiar app-debug.apk a la tablet Android 15 e instalarlo.
+   Android puede pedir permiso para instalar desde esa fuente.
+9. En AndroWish abrir Bosch_BLE_Diagnostico_DobleModo.tcl y pulsar
+   'Iniciar receptor' (puerto 8765).
+10. Abrir Bosch BLE Bridge, aceptar permisos Bluetooth, buscar el medidor,
+    tocar su nombre, medir y comprobar los paquetes HEX en el monitor Tcl.
+
+IMPORTANTE:
+- El proyecto Android NO ha sido compilado ni probado con el Bosch real.
+- El puente realiza escaneo BLE, conexion GATT y suscripcion a notificaciones
+  genericas. Si Bosch exige comandos propietarios, no llegaran medidas aun.
+- No es necesario Android Studio en tu PC.
+- Si GitHub da error de compilacion, compartir el registro de Actions.
