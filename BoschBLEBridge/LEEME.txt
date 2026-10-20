@@ -1,0 +1,26 @@
+BOSCH BLE - PRUEBA EN TIENDA
+
+CONTENIDO
+- Bosch_BLE_Diagnostico_DobleModo.tcl: monitor AndroWish Tcl/Tk
+- BoschBLEBridge: proyecto fuente Android Studio (Java), para compilar APK
+
+IMPORTANTE: no hay APK compilado. El proyecto requiere Android Studio, Android SDK y Gradle.
+No se ha verificado con un Bosch real. La app Android detecta dispositivos BLE,
+conecta, enumera servicios, se suscribe a caracteristicas con notify/indicate
+y envia notificaciones HEX por TCP a 127.0.0.1:8765.
+Algunos dispositivos requieren autenticacion o comandos propietarios; en esos casos
+no se recibirian medidas hasta implementar su protocolo.
+
+PRUEBA
+1. En Android Studio abrir carpeta BoschBLEBridge y compilar/instalar en tablet.
+2. Abrir Tcl en AndroWish y pulsar 'Iniciar receptor'.
+3. Abrir Bosch BLE Bridge, conceder permiso Bluetooth y pulsar 'Buscar BLE'.
+4. Elegir el Bosch GLM 50-27 C y realizar varias medidas.
+5. Volver a AndroWish; deberian verse paquetes HEX si el medidor envia notificaciones.
+6. Guardar registro y enviarlo para interpretar las distancias.
+
+La opcion 'Probar modo nativo' inspecciona los comandos borg presentes. No promete
+conexion GATT directa: la API BLE depende de la version concreta de AndroWish.
+El proyecto Android no garantiza compatibilidad con el protocolo Bosch.
+
+SEGURIDAD: receptor TCP limitado a loopback (127.0.0.1). No usar sobre redes abiertas.
